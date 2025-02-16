@@ -46,7 +46,7 @@ export async function getLatestBlogs() {
         });
 
         // 处理每个博客的 tags
-        return latestBlogs.map((blog) => ({
+        return latestBlogs.map((blog: Blog) => ({
             ...blog,
             tags: typeof blog.tags === 'string' ? JSON.parse(blog.tags) : blog.tags,
         }));

@@ -1,5 +1,4 @@
-import { blog, projects, about, newsletter } from '@/app/resource';
-import { PrismaClient, Blog } from '@prisma/client';
+import { blog } from '@/app/resource';
 import { Header } from './Header';
 import { BlogList } from './BlogList';
 import { Suspense } from 'react';
@@ -10,11 +9,25 @@ import { Pagination } from './Pagination';
 import { HeroBlog } from './HeroBlog';
 import { fetchBlogsPages } from '@/app/lib/data';
 
-const prisma = new PrismaClient();
+type PageProps = {
+    searchParams?: {
+        type?: string;
+        page?: string;
+    };
+};
 
-export default async function Home({ searchParams }: { searchParams?: { type?: string; page?: string } }) {
-    const type = searchParams?.type ?? 'views';
-    const page = searchParams?.page ?? '1';
+export default async function Home({
+    searchParams,
+}: {
+    searchParams: {
+        type?: string;
+        page?: string;
+    };
+}) {
+    // 使用 Promise.resolve() 来处理异步的 searchParams
+    const params = await Promise.resolve(searchParams);
+    const type = params?.type ?? 'views';
+    const page = params?.page ?? '1';
     const totalePages = await fetchBlogsPages();
 
     return (

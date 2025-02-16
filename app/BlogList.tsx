@@ -1,5 +1,4 @@
 import { BlogCard } from './BlogCard';
-import { PrismaClient, Blog } from '@prisma/client';
 import { getFilteredBlogs } from './lib/data';
 
 // 服务端组件

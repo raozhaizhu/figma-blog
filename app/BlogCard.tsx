@@ -1,4 +1,4 @@
-import { Blog } from '@prisma/client';
+import type { Blog } from '@prisma/client';
 import Image from 'next/image';
 import { badgeList } from '@/app/resource';
 
