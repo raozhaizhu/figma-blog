@@ -1,6 +1,5 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "./generated/client"
 }
 
 datasource db {
@@ -9,35 +8,33 @@ datasource db {
 }
 
 model User {
-  id        String      @id @default(uuid())
+  id        String   @id @default(uuid())
   username  String   @unique
   email     String   @unique
   password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  blogs     Blog[]   // 一个用户可以有多个博客
+  blogs     Blog[]
 }
 
 model Blog {
-  id            String   @id @default(uuid())  // 唯一标识符
+  id            String    @id @default(uuid())
   title         String
-  userId        String      // 关联 User 表
+  userId        String
   description   String?
-  content       String   // 使用 String 存储 Markdown 内容
+  content       String
   imageUrl      String?
   publishedAt   DateTime?
   type          String?
   tags          Json
   status        Status
-  views         Int      @default(0)
-  likes         Int      @default(0)
-  commentsCount Int      @default(0)
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  views         Int       @default(0)
+  likes         Int       @default(0)
+  commentsCount Int       @default(0)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
   deletedAt     DateTime?
-
-  user          User     @relation(fields: [userId], references: [id]) // 外键关联 User
+  user          User      @relation(fields: [userId], references: [id])
 }
 
 enum Status {
@@ -45,4 +42,3 @@ enum Status {
   published
   archived
 }
-

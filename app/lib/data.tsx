@@ -1,8 +1,10 @@
-import { PrismaClient } from '@prisma/client';
-import type { Blog } from '@prisma/client';
+import { PrismaClient, type Blog } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
+// 修改类型定义
+// 修改类型定义
+type BlogWithTags = Blog & { tags: any };
 // 每页显示的博客数量
 const NUMBER_PER_PAGE = 6;
 

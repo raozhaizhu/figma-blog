@@ -4,7 +4,7 @@
     "type": "module",
     "private": true,
     "scripts": {
-        "build": "next build",
+        "build": "prisma generate && next build",
         "dev": "next dev --turbopack",
         "start": "next start",
         "create-test-user": "ts-node-esm scripts/createTestUser.ts",

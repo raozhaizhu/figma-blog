@@ -14,7 +14,7 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const initialTheme = 'light'; // 你也可以从 localStorage 获取
+    const initialTheme = 'light';
 
     return (
         <html lang='en' data-theme={initialTheme}>
