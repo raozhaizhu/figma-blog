@@ -9,21 +9,11 @@ import { Pagination } from './Pagination';
 import { HeroBlog } from './HeroBlog';
 import { fetchBlogsPages } from '@/app/lib/data';
 
-type PageProps = {
-    searchParams?: {
-        type?: string;
-        page?: string;
-    };
+type Props = {
+    searchParams: URLSearchParams;
 };
 
-export default async function Home({
-    searchParams,
-}: {
-    searchParams: {
-        type?: string;
-        page?: string;
-    };
-}) {
+export default async function Home({ searchParams }: { searchParams: any }) {
     // 使用 Promise.resolve() 来处理异步的 searchParams
     const params = await Promise.resolve(searchParams);
     const type = params?.type ?? 'views';
