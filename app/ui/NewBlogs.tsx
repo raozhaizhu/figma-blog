@@ -1,6 +1,6 @@
 import { BlogCard } from './BlogCard';
-import { getLatestBlogs } from './lib/data';
-import { blog } from './resource';
+import { getLatestBlogs } from '@/app/lib/data';
+import { blog } from '@/app/resource';
 
 export const NewBlogs = async () => {
     const latestBlogs = await getLatestBlogs();

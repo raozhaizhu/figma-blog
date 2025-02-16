@@ -1,4 +1,4 @@
-import { blog } from './resource';
+import { blog } from '@/app/resource';
 
 export function Header() {
     return (

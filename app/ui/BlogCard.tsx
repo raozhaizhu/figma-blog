@@ -7,7 +7,7 @@ export function BlogCard({ aspect = '', justify = '', theBlog }: { aspect?: stri
         return null; // 或者返回一个加载状态/错误状态的UI
     }
 
-    const { title, description, imageUrl, createdAt, type, tags } = theBlog;
+    const { title, description, imageUrl, createdAt, tags } = theBlog;
     // 将 JSON 转换为数组
     const tagArray = typeof tags === 'string' ? JSON.parse(tags) : tags;
     // 如果没有博客数据，返回 null

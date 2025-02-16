@@ -1,7 +1,11 @@
 {
-    "extends": ["next", "next/core-web-vitals", "eslint:recommended"],
+    "extends": "next/core-web-vitals",
     "parserOptions": {
         "ecmaVersion": "latest"
+    },
+    "rules": {
+        "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+        "no-undef": "error"
     }
 }
 

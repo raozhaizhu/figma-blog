@@ -1,5 +1,5 @@
 import { BlogCard } from './BlogCard';
-import { getFilteredBlogs } from './lib/data';
+import { getFilteredBlogs } from '@/app/lib/data';
 
 // 服务端组件
 export async function BlogList({ type, page }: { type: string; page: string }) {

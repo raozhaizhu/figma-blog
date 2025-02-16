@@ -1,21 +1,24 @@
 import { blog } from '@/app/resource';
-import { Header } from './Header';
-import { BlogList } from './BlogList';
+import { Header } from '@/app/ui/Header';
+import { BlogList } from '@/app/ui/BlogList';
 import { Suspense } from 'react';
-import { FilterButtons } from './FilterButtons';
-import { BlogListSkeleton } from './BlogListSkeleton';
-import { NewBlogs } from './NewBlogs';
-import { Pagination } from './Pagination';
-import { HeroBlog } from './HeroBlog';
+import { FilterButtons } from '@/app/ui/FilterButtons';
+import { BlogListSkeleton } from '@/app/ui/BlogListSkeleton';
+import { HeroBlog } from '@/app/ui/HeroBlog';
+import { NewBlogs } from '@/app/ui/NewBlogs';
 import { fetchBlogsPages } from '@/app/lib/data';
+import { Pagination } from '@/app/ui/Pagination';
 
-type Props = {
-    searchParams: URLSearchParams;
-};
-
-export default async function Home({ searchParams }: { searchParams: any }) {
-    // 使用 Promise.resolve() 来处理异步的 searchParams
-    const params = await Promise.resolve(searchParams);
+export default async function HomePage({
+    searchParams,
+}: {
+    searchParams: Promise<{
+        type?: string;
+        page?: string;
+    }>;
+}) {
+    // 等待 searchParams Promise 解析
+    const params = await searchParams;
     const type = params?.type ?? 'views';
     const page = params?.page ?? '1';
     const totalePages = await fetchBlogsPages();

@@ -1,5 +1,5 @@
 import { BlogCard } from './BlogCard';
-import { getMostLikedBlog } from './lib/data';
+import { getMostLikedBlog } from '@/app/lib/data';
 
 // 获取最被喜欢的博客
 
