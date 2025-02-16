@@ -1,4 +1,5 @@
-import { PrismaClient, Blog } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
+import type { Blog } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -36,7 +37,7 @@ export async function getFilteredBlogs(type: string, page: string): Promise<Blog
 }
 
 // 获取最新的博客
-export async function getLatestBlogs() {
+export async function getLatestBlogs(): Promise<(Blog & { tags: any })[]> {
     try {
         const latestBlogs = await prisma.blog.findMany({
             orderBy: {
@@ -46,7 +47,7 @@ export async function getLatestBlogs() {
         });
 
         // 处理每个博客的 tags
-        return latestBlogs.map((blog: Blog) => ({
+        return latestBlogs.map((blog) => ({
             ...blog,
             tags: typeof blog.tags === 'string' ? JSON.parse(blog.tags) : blog.tags,
         }));

@@ -9,7 +9,8 @@
         "start": "next start",
         "create-test-user": "ts-node-esm scripts/createTestUser.ts",
         "postinstall": "prisma generate",
-        "vercel-build": "prisma generate && prisma db push && next build"
+        "vercel-build": "prisma generate && prisma db push && next build",
+        "test-build": "pnpm run vercel-build && pnpm start"
     },
     "dependencies": {
         "@heroicons/react": "^2.2.0",
