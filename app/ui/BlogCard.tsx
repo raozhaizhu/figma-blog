@@ -1,8 +1,16 @@
-import type { Blog } from '@prisma/client';
 import Image from 'next/image';
 import { badgeList } from '@/app/resource';
+import { BlogPreview } from '@/app/lib/data';
 
-export function BlogCard({ aspect = '', justify = '', theBlog }: { aspect?: string; justify?: string; theBlog: Blog }) {
+export function BlogCard({
+    aspect = '',
+    justify = '',
+    theBlog,
+}: {
+    aspect?: string;
+    justify?: string;
+    theBlog: BlogPreview;
+}) {
     if (!theBlog) {
         return null; // 或者返回一个加载状态/错误状态的UI
     }

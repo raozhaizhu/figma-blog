@@ -5,6 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import { Contact } from '../ui/Contact';
 
+
 export default function Page() {
     const filePath = path.join(process.cwd(), 'app/contact', 'contact.mdx');
     const content = fs.readFileSync(filePath, 'utf8');

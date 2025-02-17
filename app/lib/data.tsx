@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 // 定义我们需要的字段类型
-type BlogPreview = {
+export type BlogPreview = {
     id: string;
     title: string;
     description: string | null;
@@ -15,7 +15,7 @@ type BlogPreview = {
 const NUMBER_PER_PAGE = 6;
 
 // 统一的字段选择器
-const blogPreviewSelect = {
+export const blogPreviewSelect = {
     id: true,
     title: true,
     description: true,
