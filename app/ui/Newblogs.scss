@@ -1,0 +1,64 @@
+.blog-box {
+    display: grid;
+    grid-template-areas:
+        'blog-1'
+        'blog-2'
+        'blog-3';
+    grid-template-columns: 1fr;
+    gap: 8px;
+
+    @media screen and (min-width: 768px) {
+        grid-template-areas:
+            'blog-1'
+            'blog-1'
+            'blog-2'
+            'blog-3';
+    }
+
+    @media screen and (min-width: 1280px) {
+        grid-template-areas:
+            'blog-1 blog-2'
+            'blog-1 blog-3';
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+    .blog-1 {
+        grid-area: blog-1;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        min-height: 300px; // 添加最小高度
+
+        @media screen and (min-width: 1280px) {
+            gap: 16px;
+        }
+    }
+    .blog-2 {
+        grid-area: blog-2;
+    }
+    .blog-3 {
+        grid-area: blog-3;
+    }
+
+    .blog-2,
+    .blog-3 {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        @media screen and (min-width: 768px) {
+            flex-direction: row;
+
+            // 确保图片容器和内容各占一半
+            > div {
+                flex: 1;
+                min-width: 0; // 防止溢出
+            }
+        }
+
+        @media screen and (min-width: 1280px) {
+            gap: 16px;
+        }
+    }
+}
+

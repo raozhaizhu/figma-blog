@@ -1,24 +1,8 @@
-import { badgeList } from '@/app/resource';
+import type { Blog } from '@prisma/client';
 import Image from 'next/image';
+import { badgeList } from '@/app/resource';
 
-type BlogPreview = {
-    id: string;
-    title: string;
-    description: string | null;
-    imageUrl: string | null;
-    createdAt: Date;
-    tags: any;
-};
-
-export function BlogCard({
-    aspect = '',
-    justify = '',
-    theBlog,
-}: {
-    aspect?: string;
-    justify?: string;
-    theBlog: BlogPreview;
-}) {
+export function BlogCard({ aspect = '', justify = '', theBlog }: { aspect?: string; justify?: string; theBlog: Blog }) {
     if (!theBlog) {
         return null; // 或者返回一个加载状态/错误状态的UI
     }
