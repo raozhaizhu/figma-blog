@@ -14,3 +14,11 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     return [1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages];
 };
 
+export function generateSlug(title: string) {
+    return title
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .slice(0,50);
+}

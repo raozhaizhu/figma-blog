@@ -42,7 +42,6 @@ export default async function HomePage({
                 <Suspense key={type} fallback={<BlogListSkeleton />}>
                     <BlogList type={type} page={page} />
                 </Suspense>
-                <div className='divider'></div>
                 <Pagination totalPages={totalePages} />
             </section>
         </main>

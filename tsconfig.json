@@ -24,10 +24,11 @@
         },
         "types": ["node", "@prisma/client"]
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "scripts/updateSlugs.ts"],
     "exclude": ["node_modules"],
     "ts-node": {
-        "esm": true
+        "esm": true,
+        "experimentalSpecifiers": true
     }
 }
 

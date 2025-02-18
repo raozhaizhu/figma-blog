@@ -1,30 +1,63 @@
 import { PrismaClient, Prisma } from '@prisma/client';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import { dirname, join } from 'path';
 
 const prisma = new PrismaClient();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-// 获取当前文件的路径和目录
-const __filename = fileURLToPath(import.meta.url); // 转换 import.meta.url 为文件路径
-const __dirname = dirname(__filename); // 获取目录路径
+// 清理 JSON 字符串的函数
+function cleanJsonString(str: string): string {
+    // 移除 BOM
+    if (str.charCodeAt(0) === 0xfeff) {
+        str = str.slice(1);
+    }
+
+    // 移除所有注释（包括多行注释）
+    str = str.replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '');
+
+    // 移除文件开头的任何非 JSON 内容
+    str = str.substring(str.indexOf('['));
+
+    // 移除所有不可见字符，除了合法的空白
+    str = str.replace(/[^\x20-\x7E\s]/g, '');
+
+    return str;
+}
 
 async function main() {
     try {
-        // 构造 JSON 文件的路径
-        const filePath = `${__dirname}/palceholder.json`; // 假设 JSON 文件在上级目录的 app 文件夹中
-        const fileContent = fs.readFileSync(filePath, 'utf-8');
-        const blogData = JSON.parse(fileContent);
+        const filePath = join(__dirname, 'palceholder.json');
+        console.log('Reading file from:', filePath);
 
-        // 遍历每一篇博客数据并插入到数据库
+        let fileContent = fs.readFileSync(filePath, 'utf-8');
+
+        // 清理并格式化 JSON
+        const cleanedContent = cleanJsonString(fileContent);
+        console.log('Cleaned content start:', cleanedContent.substring(0, 100));
+
+        // 验证 JSON 格式
+        try {
+            JSON.parse(cleanedContent);
+        } catch (parseError) {
+            console.error('Invalid JSON. Attempting to fix...');
+            // 如果解析失败，尝试写入文件以便检查
+            fs.writeFileSync(join(__dirname, 'debug-content.json'), cleanedContent);
+            throw parseError;
+        }
+
+        const blogData = JSON.parse(cleanedContent);
+
         for (const blog of blogData) {
             await prisma.blog.create({
                 data: {
                     id: blog.id,
                     title: blog.title,
+                    slug: blog.slug,
                     userId: blog.userId,
                     description: blog.description,
-                    content: blog.content,
+                    content: blog.content, // 现在 content 已经包含正确的 \n
                     imageUrl: blog.imageUrl,
                     publishedAt: blog.publishedAt ? new Date(blog.publishedAt) : null,
                     type: blog.type,
@@ -42,7 +75,10 @@ async function main() {
             console.log(`Blog with id ${blog.id} has been added.`);
         }
     } catch (error) {
-        console.error('Error inserting blog data:', error);
+        console.error('Error details:', error);
+        if (error instanceof SyntaxError) {
+            console.error('JSON Syntax Error. Please check debug-content.json');
+        }
     } finally {
         await prisma.$disconnect();
     }

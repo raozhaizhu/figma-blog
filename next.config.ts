@@ -16,3 +16,15 @@ const nextConfig = {
 
 module.exports = withMDX(nextConfig);
 
+module.exports = {
+    async redirects() {
+        return [
+            {
+                source: '/blog',
+                destination: '/',
+                permanent: true, // 301永久重定向
+            },
+        ];
+    },
+};
+

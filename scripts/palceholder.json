@@ -2,9 +2,10 @@
     {
         "id": "f6f07a56-0b72-474e-9cd0-e9254cd25b76",
         "title": "Top 10 JavaScript Performance Tips",
+        "slug": "top-10-javascript-performance-tips",
         "userId": "64f3dee7-a50e-4f29-a97b-d8c3acfe3ef1",
         "description": "This article covers the top 10 tips to optimize JavaScript performance for better web development.",
-        "content": "## JavaScript Performance Optimization\n\n1. **Minify JavaScript**: Remove unnecessary spaces, comments, and lines from your code.\n2. **Use Async and Defer**: Load JavaScript files asynchronously or defer them to avoid blocking rendering.\n3. **Avoid Global Variables**: Minimize the usage of global variables to avoid polluting the global namespace.",
+        "content": "# Top 10 JavaScript Performance Tips\n\n## Introduction\nOptimizing JavaScript performance is crucial for modern web applications. Here are the top 10 tips to enhance your application's performance.\n\n### 1. Code Bundling and Splitting\n```javascript\n// Example of code splitting\nimport('./module').then(module => {\n    // Use module\n});\n```\n\n### 2. Memory Management\n- Avoid memory leaks\n- Clean up event listeners\n- Use WeakMap for better garbage collection\n\n### 3. Efficient DOM Manipulation\n> **Tip**: Always batch your DOM updates\n\n```javascript\nconst fragment = document.createDocumentFragment();\nfor (let i = 0; i < 1000; i++) {\n    const el = document.createElement('div');\n    fragment.appendChild(el);\n}\ndocument.body.appendChild(fragment);\n```\n\n#### Performance Checklist\n- [ ] Minimize DOM access\n- [ ] Use event delegation\n- [ ] Implement virtual scrolling\n\n### 4. Image Optimization\n![Performance Chart](https://example.com/chart.jpg)\n\n### 5. Code Examples\nHere's a table comparing different approaches:\n\n| Method | Pros | Cons |\n|--------|------|------|\n| Debouncing | Reduces calls | Delays execution |\n| Throttling | Consistent | May miss calls |\n\n### Further Reading\n* [MDN Documentation](https://developer.mozilla.org)\n* [JavaScript Performance Guide](https://example.com)\n\n> Remember: Premature optimization is the root of all evil\n\n### Code Block Example\n```typescript\ninterface PerformanceOpts {\n    timeout: number;\n    maxRetries: number;\n}\n\nfunction optimize(opts: PerformanceOpts) {\n    // Implementation\n}\n```",
         "imageUrl": "https://example.com/js-performance.jpg",
         "publishedAt": "2025-02-16T10:00:00Z",
         "type": "Technology",
@@ -20,6 +21,7 @@
     {
         "id": "3d879ef6-e9d4-493d-a396-0dfe74f12d23",
         "title": "Understanding Responsive Web Design",
+        "slug": "understanding-responsive-web-design",
         "userId": "64f3dee7-a50e-4f29-a97b-d8c3acfe3ef1",
         "description": "A comprehensive guide to understanding and implementing responsive web design.",
         "content": "## What is Responsive Web Design?\n\n1. **Fluid Layouts**: Use percentage-based widths instead of fixed pixel widths.\n2. **Media Queries**: Apply different styles depending on the device's screen size.\n3. **Flexible Images**: Use images that can scale within their containing element.",
@@ -38,6 +40,7 @@
     {
         "id": "8b1e3be5-e9a3-42ed-a1a6-bf303c3e8bfa",
         "title": "Introduction to Node.js",
+        "slug": "introduction-to-node-js",
         "userId": "64f3dee7-a50e-4f29-a97b-d8c3acfe3ef1",
         "description": "This article serves as an introduction to Node.js, covering basic concepts and how to get started.",
         "content": "## Node.js Basics\n\n1. **Non-blocking I/O**: Node.js uses a non-blocking, event-driven architecture for building scalable applications.\n2. **Modules**: Use built-in modules like `fs`, `http`, and `path` to build your Node.js applications.\n3. **NPM**: Node's package manager (NPM) makes it easy to install libraries and manage dependencies.",
@@ -56,6 +59,7 @@
     {
         "id": "134ed625-4f82-4bb1-b4c3-41cf9c8a39f3",
         "title": "Best Practices for SEO in 2025",
+        "slug": "best-practices-for-seo-in-2025",
         "userId": "64f3dee7-a50e-4f29-a97b-d8c3acfe3ef1",
         "description": "Learn about the latest SEO best practices for 2025 to rank higher on search engines.",
         "content": "## SEO Best Practices\n\n1. **Mobile-first Indexing**: Ensure your website is mobile-friendly.\n2. **Core Web Vitals**: Focus on improving your page's performance, interactivity, and visual stability.\n3. **Content Quality**: Prioritize high-quality, user-focused content that addresses search intent.",
@@ -74,6 +78,7 @@
     {
         "id": "feff1234-72c4-4e3b-9ed8-d56472b15a52",
         "title": "Exploring Artificial Intelligence",
+        "slug": "exploring-artificial-intelligence",
         "userId": "64f3dee7-a50e-4f29-a97b-d8c3acfe3ef1",
         "description": "An introductory article about the applications and potential of artificial intelligence.",
         "content": "## Artificial Intelligence Overview\n\n1. **Machine Learning**: A subset of AI where algorithms learn from data.\n2. **Natural Language Processing**: Techniques that enable machines to understand and generate human language.\n3. **Computer Vision**: AI techniques that allow computers to interpret visual information.",
@@ -92,6 +97,7 @@
     {
         "id": "7b9a2e78-50df-4fc5-8b99-672cf3e432e1",
         "title": "The Importance of Web Accessibility",
+        "slug": "the-importance-of-web-accessibility",
         "userId": "64f3dee7-a50e-4f29-a97b-d8c3acfe3ef1",
         "description": "This article discusses why web accessibility is critical for inclusive web design.",
         "content": "## Web Accessibility Essentials\n\n1. **Keyboard Navigation**: Ensure your site can be navigated using a keyboard.\n2. **Screen Reader Support**: Provide alternative text for images and ARIA labels for better accessibility.\n3. **Color Contrast**: Ensure sufficient contrast between text and background for readability.",
@@ -110,6 +116,7 @@
     {
         "id": "d62a7aef-18fc-4b8b-b2be-13b87d585a6e",
         "title": "Mastering CSS Grid Layout",
+        "slug": "mastering-css-grid-layout",
         "userId": "64f3dee7-a50e-4f29-a97b-d8c3acfe3ef1",
         "description": "A complete guide to mastering CSS Grid Layout for web development.",
         "content": "## CSS Grid Layout\n\n1. **Define a Grid**: Use `display: grid` to create a grid container.\n2. **Grid Template Columns/Rows**: Define the number of columns and rows.\n3. **Grid Items**: Place items in specific grid cells using `grid-column` and `grid-row`.",
@@ -128,6 +135,7 @@
     {
         "id": "9aee9f2e-b9b0-4ec2-b0be-40135b4a9829",
         "title": "Exploring the Power of Cloud Computing",
+        "slug": "exploring-the-power-of-cloud-computing",
         "userId": "64f3dee7-a50e-4f29-a97b-d8c3acfe3ef1",
         "description": "Learn how cloud computing is transforming industries and enabling new innovations.",
         "content": "## Cloud Computing Basics\n\n1. **Scalability**: Cloud computing offers on-demand resources that can scale based on demand.\n2. **Cost Efficiency**: Pay only for the resources you use, reducing upfront costs.\n3. **Security**: Cloud providers offer advanced security measures to protect your data.",
@@ -146,6 +154,7 @@
     {
         "id": "bbeea3f3-4d1a-48e1-b9ef-c76e04a68b2f",
         "title": "A Beginner's Guide to Python Programming",
+        "slug": "a-beginners-guide-to-python-programming",
         "userId": "64f3dee7-a50e-4f29-a97b-d8c3acfe3ef1",
         "description": "Start learning Python with this beginner's guide, covering essential concepts and examples.",
         "content": "## Python Basics\n\n1. **Variables**: Assign values to variables with `=`.\n2. **Functions**: Define functions using `def`.\n3. **Loops**: Use `for` and `while` loops to repeat code.",

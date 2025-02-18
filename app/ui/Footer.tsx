@@ -3,6 +3,9 @@ import { footer } from '@/app/resource';
 export const Footer = () => {
     return (
         <section className='w-full sm:px-4 xl:px-0  bg-base-100 text-base-content'>
+            <div className='container mx-auto'>
+                <div className='divider'></div>
+            </div>
             <footer className='footer container mx-auto flex justify-between '>
                 <aside>
                     <svg

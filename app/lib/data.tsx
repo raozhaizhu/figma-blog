@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import { generateSlug } from '@/app/lib/utils';
 
 const prisma = new PrismaClient();
 
@@ -85,6 +86,42 @@ export async function getMostLikedBlog(): Promise<BlogPreview | null> {
     } catch (error) {
         console.error('error fetching most liked blog:', error);
         return null;
+    }
+}
+
+export async function getBlogBySlug(slug: string) {
+    const prisma = new PrismaClient();
+
+    try {
+        const blog = await prisma.blog.findFirst({
+            where: {
+                slug: slug,
+            },
+            select: {
+                id: true,
+                title: true,
+                description: true,
+                content: true,
+                imageUrl: true,
+                createdAt: true,
+                tags: true,
+            },
+        });
+
+        if (!blog) {
+            console.log(`No blog found with slug: ${slug}`);
+            return null;
+        }
+
+        return {
+            ...blog,
+            tags: typeof blog.tags === 'string' ? JSON.parse(blog.tags) : blog.tags,
+        };
+    } catch (error: any) {
+        console.error('Error fetching blog by slug:', error);
+        throw new Error(`Failed to fetch blog: ${error.message}`);
+    } finally {
+        await prisma.$disconnect();
     }
 }
 

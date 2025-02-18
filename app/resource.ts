@@ -43,7 +43,7 @@ export const projects = {
 
 export const about = {
     label: 'About',
-    title: 'Raozhaizhu',
+    title: 'ABOUT ME',
     link: '/about',
     headline: 'About me',
     subtitles: ['Skills', 'Experience', 'Education'],

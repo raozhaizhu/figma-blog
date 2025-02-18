@@ -1,6 +1,9 @@
 import Image from 'next/image';
 import { badgeList } from '@/app/resource';
 import { BlogPreview } from '@/app/lib/data';
+import Link from 'next/link';
+import { ExternalLink } from 'lucide-react';
+import { generateSlug } from '@/app/lib/utils';
 
 export function BlogCard({
     aspect = '',
@@ -26,14 +29,21 @@ export function BlogCard({
                 <Image src={`${imageUrl}`} alt='Example' fill className='object-cover' />
             </div>
             <div className={`flex flex-col gap-3 ${justify}`}>
-                <p className='text-primary'>
-                    {createdAt.toLocaleDateString('en-US', {
-                        month: 'long',
-                        day: 'numeric',
-                        year: 'numeric',
-                    })}
-                </p>
+                <div className='flex gap-4 items-center'>
+                    <p className='text-primary'>
+                        {createdAt.toLocaleDateString('en-US', {
+                            month: 'long',
+                            day: 'numeric',
+                            year: 'numeric',
+                        })}
+                    </p>
+                    <Link href={`/blog/${generateSlug(title)}`}>
+                        <ExternalLink className='h-6 w-6 hover:scale-110 transition duration-300' />
+                    </Link>
+                </div>
+
                 <h3 className='text-lg font-bold'>{title}</h3>
+
                 <p>{description}</p>
                 <div className='flex flex-wrap gap-2'>
                     {Array.isArray(tagArray) &&

@@ -33,7 +33,6 @@ export default function Page() {
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 ></video>
             </div>
-            <div className='divider'></div>
         </main>
     );
 }
