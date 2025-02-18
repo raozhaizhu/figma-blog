@@ -2,20 +2,22 @@ import { getBlogBySlug } from '@/app/lib/data';
 import SafeMarkdown from '@/app/lib/SafeMarkdown';
 import { BlogCard } from '@/app/ui/BlogCard';
 import { getLatestBlogs } from '@/app/lib/data';
-import { Contact } from '@/app/ui/Contact';
 import Image from 'next/image';
 import { badgeList } from '@/app/resource';
 import { HeroContact } from '@/app/ui/HeroContact';
 
 interface PageProps {
-    params: {
+    params: Promise<{
         slug: string;
-    };
+    }>;
 }
-export default async function BlogPost({ params }: PageProps) {
-    const latestBlogs = await getLatestBlogs();
 
-    const { slug } = params;
+export default async function BlogPost({ params }: PageProps) {
+    // 等待 params Promise 解析
+    const resolvedParams = await params;
+    const { slug } = resolvedParams;
+
+    const latestBlogs = await getLatestBlogs();
     const blog = await getBlogBySlug(slug);
     if (!blog) return null;
     const { title, imageUrl, createdAt, tags, content } = blog;
