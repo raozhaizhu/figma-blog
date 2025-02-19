@@ -3,7 +3,6 @@ import { contact } from '../resource';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import fs from 'fs';
 import path from 'path';
-import { Contact } from '@/app/ui/Contact';
 import { HeroContact } from '@/app/ui/HeroContact';
 
 export default function Page() {
