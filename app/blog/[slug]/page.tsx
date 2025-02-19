@@ -60,7 +60,15 @@ function BlogContent({ title, imageUrl, createdAt, tags, content }: Blog) {
     return (
         <>
             <div className={`relative aspect-[16/9] group`}>
-                <Image src={imageUrl || ''} alt='Example' fill priority className='object-cover' />
+                <Image
+                    src={imageUrl || ''}
+                    alt='Example'
+                    fill
+                    priority
+                    className='object-cover'
+                    placeholder='blur'
+                    blurDataURL='/placeholder.jpg'
+                />
             </div>
             <article className='flex flex-col justify-center items-center prose max-w-none '>
                 <p className='text-primary mr-auto'>

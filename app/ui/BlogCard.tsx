@@ -4,8 +4,6 @@ import { BlogPreview } from '@/app/lib/data';
 import Link from 'next/link';
 import { ExternalLink } from 'lucide-react';
 import { generateSlug } from '@/app/lib/utils';
-import { BlogSkeleton } from '@/app/ui/Skeleton';
-import { Suspense } from 'react';
 
 export function BlogCard({
     aspect = '',
@@ -28,7 +26,14 @@ export function BlogCard({
     return (
         <>
             <div className={`relative ${aspect} group`}>
-                <Image src={`${imageUrl}`} alt='Example' fill className='object-cover' />
+                <Image
+                    src={`${imageUrl}`}
+                    alt='Example'
+                    fill
+                    className='object-cover'
+                    placeholder='blur'
+                    blurDataURL='/placeholder.jpg'
+                />
             </div>
             <div className={`flex flex-col gap-3 ${justify}`}>
                 <div className='flex gap-4 items-center'>
