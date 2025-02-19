@@ -26,7 +26,13 @@ export default async function HomePage({
                     </Suspense>
                 </div>
             </section>
-            <Suspense fallback={<BlogSkeleton />}>
+            <Suspense
+                fallback={
+                    <div className='container mxauto'>
+                        <BlogSkeleton />
+                    </div>
+                }
+            >
                 <HeroBlog />
             </Suspense>
             <section className='container mx-auto mb-4 xl:mb-8 px-2 sm:px-4 xl:px-0 '>
