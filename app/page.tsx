@@ -28,7 +28,7 @@ export default async function HomePage({
             </section>
             <Suspense
                 fallback={
-                    <div className='container mxauto'>
+                    <div className='container mx-auto'>
                         <BlogSkeleton />
                     </div>
                 }
