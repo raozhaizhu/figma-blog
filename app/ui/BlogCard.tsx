@@ -4,6 +4,8 @@ import { BlogPreview } from '@/app/lib/data';
 import Link from 'next/link';
 import { ExternalLink } from 'lucide-react';
 import { generateSlug } from '@/app/lib/utils';
+import { BlogSkeleton } from '@/app/ui/Skeleton';
+import { Suspense } from 'react';
 
 export function BlogCard({
     aspect = '',

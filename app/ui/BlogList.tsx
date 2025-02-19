@@ -2,7 +2,18 @@ import { BlogCard } from './BlogCard';
 import { getFilteredBlogs, BlogPreview } from '@/app/lib/data';
 
 // 服务端组件
-export async function BlogList({ type, page }: { type: string; page: string }) {
+export async function BlogList({
+    searchParams,
+}: {
+    searchParams: Promise<{
+        type?: string;
+        page?: string;
+    }>;
+}) {
+    // 等待 searchParams Promise 解析
+    const params = await searchParams;
+    const type = params?.type ?? 'views';
+    const page = params?.page ?? '1';
     const filteredBlogs: BlogPreview[] = await getFilteredBlogs(type, page);
 
     return (
