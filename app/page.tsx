@@ -34,7 +34,9 @@ export default async function HomePage({
             <section className='container mx-auto mb-4 xl:mb-8 px-2 sm:px-4 xl:px-0 '>
                 <div className='flex justify-between items-center mb-4 xl:mb-8'>
                     <h2 className='text-3xl font-bold'>{blog.subtitles[0]}</h2>
-                    <FilterButtons />
+                    <Suspense fallback={<SmallSkeleton />}>
+                        <FilterButtons />
+                    </Suspense>
                 </div>
                 <Suspense fallback={<BlogSkeleton />}>
                     <BlogList searchParams={searchParams} />
