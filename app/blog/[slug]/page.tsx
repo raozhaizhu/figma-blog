@@ -100,18 +100,9 @@ function LatestBlogs({ latestBlogs }: { latestBlogs: BlogPreview[] }) {
     return (
         <>
             <p className='text-3xl mb-4'>Latest Blogs</p>
-            <div className='grid grid-rows-auto gap-4'>
-                <BlogCard theBlog={latestBlogs[0]} aspect='aspect-[4/3]' />
-            </div>
-            <div className='grid grid-rows-auto gap-4'>
-                <BlogCard theBlog={latestBlogs[1]} aspect='aspect-[4/3]' />
-            </div>
-            <div className='grid grid-rows-auto gap-4'>
-                <BlogCard theBlog={latestBlogs[2]} aspect='aspect-[4/3]' />
-            </div>
-            <div className='grid grid-rows-auto gap-4'>
-                <BlogCard theBlog={latestBlogs[3]} aspect='aspect-[4/3]' />
-            </div>
+            {latestBlogs.map((blog, index) => (
+                <BlogCard key={index} theBlog={blog} aspect='aspect-[4/3]' />
+            ))}
         </>
     );
 }
